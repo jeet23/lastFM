@@ -1,1 +1,1 @@
-# lastFM
+Dummy project to start learning Ruby on rails
