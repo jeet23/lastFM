@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   
-  get 'registration/new'
+  get 'song/index'
 
   get 'home/index'
 
   devise_for :members
-   root to: "home#index"
+   root to: "song#index"
+
+  post "/song/play" => "song#play"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

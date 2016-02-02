@@ -11,12 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202075912) do
-
-  create_table "contacts", force: :cascade do |t|
-    t.string "mobile",  limit: 255, null: false
-    t.string "address", limit: 255, null: false
-  end
+ActiveRecord::Schema.define(version: 20160202110636) do
 
   create_table "members", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -36,5 +31,14 @@ ActiveRecord::Schema.define(version: 20160202075912) do
 
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
   add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
+
+  create_table "songs", force: :cascade do |t|
+    t.string   "songname",   limit: 255
+    t.string   "artist",     limit: 255
+    t.text     "album",      limit: 65535
+    t.string   "duration",   limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
 end

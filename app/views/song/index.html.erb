@@ -1,0 +1,27 @@
+<% if member_signed_in? %>
+<h1>List of songs</h1>
+
+
+
+<hr>
+<table class="table table-hover">
+	<tr><td><b>Song name</b></td>
+	<td><b>Artist</b></td>
+	<td><b>Album</b></td>
+	<td><b>Duration</b></td>
+	<td><b>Play now</b></td></tr>
+
+	
+<% @songs.each do |a| %>
+<tr>
+<td class="success"><%= a.songname %></td>
+<td class="warning"><%= a.artist %></td>
+<td class="danger"> <%= a.album %></td>
+<td class="info"><%= a.duration %></td>
+<td class="btn-default"><%= button_to "Play", song_play_path %></td></tr>
+
+<% end %>
+</table>
+<% else %>
+<h2><em>Please login or signup</em></h2>
+<% end %>
