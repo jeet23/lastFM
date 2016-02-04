@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'timetable/index'
+
+  get 'list/index'
+
   get 'song/index'
 
   get 'home/index'
@@ -8,6 +12,8 @@ Rails.application.routes.draw do
    root to: "song#index"
 
   post "/song/play" => "song#play"
+  post "list/index" => "list#index"
+  post "timetable/index" => "timetable#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

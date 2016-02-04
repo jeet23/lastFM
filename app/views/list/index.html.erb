@@ -1,0 +1,24 @@
+<% if member_signed_in? %>
+
+<h1> List of songs played</h1>
+
+<table class="table table-hover">
+	<tr><td><b>Song name</b></td>
+	<td><b>Album</b></td>
+	<td><b>Artist</b></td>
+	<td><b>Favourite</b></td>
+
+	
+<% @lists.each do |a| %>
+<tr>
+<td class="success"><%= a.song.songname %></td>
+<td class="warning"><%= a.song.album %></td>
+<td class="danger"><%= a.song.artist %></td>
+<td class="info"><%= a.fav %></td><br>
+</tr>
+<% end %>
+
+</table>
+<% else %>
+<h2><em>Please login or signup</em></h2>
+<% end %>

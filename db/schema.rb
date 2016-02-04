@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202110636) do
+ActiveRecord::Schema.define(version: 20160203115606) do
+
+  create_table "lists", force: :cascade do |t|
+    t.integer  "member_id",  limit: 4
+    t.integer  "song_id",    limit: 4
+    t.boolean  "fav"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "lists", ["member_id"], name: "index_lists_on_member_id", using: :btree
+  add_index "lists", ["song_id"], name: "index_lists_on_song_id", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -41,4 +52,16 @@ ActiveRecord::Schema.define(version: 20160202110636) do
     t.datetime "updated_at",               null: false
   end
 
+  create_table "timetables", force: :cascade do |t|
+    t.integer  "list_id",    limit: 4
+    t.time     "playtime"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "timetables", ["list_id"], name: "index_timetables_on_list_id", using: :btree
+
+  add_foreign_key "lists", "members"
+  add_foreign_key "lists", "songs"
+  add_foreign_key "timetables", "lists"
 end
