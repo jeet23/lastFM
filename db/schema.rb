@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203115606) do
+ActiveRecord::Schema.define(version: 20160204071413) do
 
   create_table "lists", force: :cascade do |t|
     t.integer  "member_id",  limit: 4
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20160203115606) do
 
   create_table "timetables", force: :cascade do |t|
     t.integer  "list_id",    limit: 4
-    t.time     "playtime"
+    t.datetime "playtime"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end

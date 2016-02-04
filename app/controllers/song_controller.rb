@@ -8,7 +8,7 @@ class SongController < ApplicationController
 
 	if @list.valid?
 		@time = Timetable.new
-    @time.playtime = Time.now
+    @time.playtime = Time.now.in_time_zone("Eastern Time (US & Canada)")
 		@time.list = @list
 		@time.save
   	end
