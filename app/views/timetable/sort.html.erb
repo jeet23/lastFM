@@ -1,0 +1,36 @@
+<% if member_signed_in? %>
+Sorting till <%= @time %> <br><br>
+<table class="table table-hover">
+	<tr>
+	<td><b>Song name</b></td>
+	<td><b>Played at</b></td>
+		</tr>
+	<tr>
+		<td>
+<table class="table table-hover">
+		
+<% @finals.each do |a| %>
+
+<tr>
+<td class="success"><%= a.song.songname %></td>
+
+</tr>
+
+<% end %>
+</table>
+</td>
+<td>
+<table class="table table-hover">
+<% @finals1.each do |b| %>
+<tr>
+<td class="success"><%= b %></td>
+</tr>
+<% end %>
+</table>
+</td>
+</tr>
+</table>
+<% else %>
+Please login 
+<% end %>
+

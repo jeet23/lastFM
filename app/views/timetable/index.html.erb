@@ -2,17 +2,31 @@
 
 <h1> List of most played songs</h1>
 
+<h4>Sort according to date</h4>
+<div class="form-control">
+<%= form_tag("/timetable/sort", method: "post") do %>
+<%= select_tag(:sort_id, options_for_select([['1 hour', 1], ['6 hours', 2], ['1 day', 3],['1 month',4],['1 year',5]]) ) %>
+<%= submit_tag("Sort") %>
+<% end %>
+</div>
+<hr>
 <table class="table table-hover">
 	<tr><td><b>Time played at</b></td>
 	<td><b>Song detail</b></td>
-	
-	
-<% @tables.each do |a| %>
-<tr>
+	<td><b>Number of times played</b></td>
+	<td><b>Favorite</b></td>
+		
 
-<td class="success"><%= a.playtime %></td>
-<td class="danger"><%= a.list.song.songname %></td>
+<% @finals.each do |a| %>
+	<% a[:tables].each do |b| %>
+<tr>
+<td class="success"><%= b.playtime %></td>
+<td class="info"><%= b.list.song.songname %></td>
+<td class="danger"><%= a[:tables].count %></td>
+<td class="default"><%= b.list.fav %></td>
+
 </tr>
+<% end %>
 <% end %>
 
 </table>

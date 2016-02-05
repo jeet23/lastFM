@@ -1,6 +1,46 @@
 class TimetableController < ApplicationController
   def index
-  	@tables = Timetable.all
+  	@a = List.where(:member_id => current_member.id)
+    @finals= []
+
+
+  	@a.each do |m|
+  		@tables = Timetable.where(:list_id => m.id )
+  		@finals << {tables: @tables, count: @tables.count}
+  	end
   end
 
+  def calculate
+  	@a = List.where(:member_id => current_member.id, :song_id => params[:foo1])
+   
+   	@a.each do |u|
+  		if u.fav
+  			u.fav = 0
+  		else
+  			u.fav = 1
+  		end
+  		u.save
+  	end
+  	redirect_to '/' 
+  end
+
+  def sort
+
+  		@a = params[:sort_id]
+  		if @a == "1"
+  			@time = Time.now.utc - 1.hour
+  		elsif @a == "2"
+  			@time = Time.now.utc - 6.hour
+  		elsif @a == "3"
+  			@time = Time.now.utc - 1.day
+  		elsif @a == "4"
+  			@time = Time.now.utc - 1.month
+  		else
+  			@time = Time.now.utc - 1.year
+  		end 
+
+  	@finals = List.joins(:timetable).where(:member_id => current_member.id).where(Timetable.table_name + ".playtime > ?",@time)
+	@finals1 = List.joins(:timetable).where(:member_id => current_member.id).where(Timetable.table_name + ".playtime > ?",@time).select("playtime").map(&:playtime)
+
+  end
 end

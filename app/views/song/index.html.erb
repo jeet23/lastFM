@@ -1,18 +1,28 @@
 <% if member_signed_in? %>
+<script>
+
+$(document).ready(function() {
+    //set initial state.
+    
+    $('#value').click(function() {
+            $.ajax('/timetable/calculate1');
+            alert("hello");
+
+    });
+});
+
+</script>
 <h1>List of songs</h1>
-
-<class="btn-default"><%= button_to "Recently played", list_index_path %>
-<br>
-<class="btn-default"><%= button_to "Most played", timetable_index_path %>
-
 <hr>
+
 <table class="table table-hover">
 	<tr><td><b>Song name</b></td>
 	<td><b>Artist</b></td>
 	<td><b>Album</b></td>
 	<td><b>Duration</b></td>
+	<td><b>Favorite</b></td>
 	<td><b>Play now</b></td>
-	<td><b>Favorite</b></td></tr>
+	</tr>
 
 	
 <% @songs.each do |a| %>
@@ -21,8 +31,9 @@
 <td class="warning"><%= a.artist %></td>
 <td class="danger"> <%= a.album %></td>
 <td class="info"><%= a.duration %></td>
+<td class="warning"><%= button_to 'Y/N', timetable_calculate_path(foo1: a.id) %></td>
 <td class="btn-default"><%= button_to "Play", song_play_path(foo: a.id) %></td>
-<td class="warning"><%= radio_button :autolyse, false, :checked => true %></td>
+
 </tr>
 
 <% end %>

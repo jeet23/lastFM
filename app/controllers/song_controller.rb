@@ -6,12 +6,14 @@ class SongController < ApplicationController
   def play
   	@list = List.find_or_create_by(member_id: current_member.id, song_id: params[:foo])
 
-	if @list.valid?
-		@time = Timetable.new
-    @time.playtime = Time.now.in_time_zone("Eastern Time (US & Canada)")
-		@time.list = @list
-		@time.save
-  	end
+    
+    if @list.valid?
+  		@time = Timetable.new
+      @time.playtime = Time.now.localtime
+  		@time.list = @list
+  		@time.save
+    end
   end
+
 
 end
