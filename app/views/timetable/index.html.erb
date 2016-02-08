@@ -10,26 +10,39 @@
 <% end %>
 </div>
 <hr>
+
 <table class="table table-hover">
-	<tr><td><b>Time played at</b></td>
-	<td><b>Song detail</b></td>
+		<tr><td><b>Song name</b></td>
+	<td><b>Favourite</b></td>
 	<td><b>Number of times played</b></td>
-	<td><b>Favorite</b></td>
+	</tr>
+	<tr>
+		<td>
+			<table class="table table-hover">
+				<% @tests1.each do |a| %>
+				<tr><td class="success"> <%= a.song.songname %></td></tr>
+				<% end %>
+
+			</table>
+		</td>
+		<td>
+			<table class="table table-hover">
+				<% @tests1.each do |a| %>
+				<tr><td class="warning"> <%= a.fav %></td></tr>
+				<% end %>
+			</table>
+		</td>
+		<td>
+			<table class="table table-hover">
+				<% @tests.each do |key, value| %>
+				<tr><td class="danger"> <%= value %></td></tr>
+				<% end %>
+			</table>
+		</td>
 		
+	</tr>
 
-<% @finals.each do |a| %>
-	<% a[:tables].each do |b| %>
-<tr>
-<td class="success"><%= b.playtime %></td>
-<td class="info"><%= b.list.song.songname %></td>
-<td class="danger"><%= a[:tables].count %></td>
-<td class="default"><%= b.list.fav %></td>
-
-</tr>
-<% end %>
-<% end %>
-
-</table>
+	</table>
 <% else %>
 <h2><em>Please login or signup</em></h2>
 <% end %>

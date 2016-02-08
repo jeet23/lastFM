@@ -1,13 +1,9 @@
 class TimetableController < ApplicationController
   def index
-  	@a = List.where(:member_id => current_member.id)
-    @finals= []
+  
+     @tests = List.joins(:timetable).where(:member_id => current_member.id).group(:song_id).count
+     @tests1 = List.joins(:timetable).where(:member_id => current_member.id).group(:song_id)
 
-
-  	@a.each do |m|
-  		@tables = Timetable.where(:list_id => m.id )
-  		@finals << {tables: @tables, count: @tables.count}
-  	end
   end
 
   def calculate
@@ -40,7 +36,7 @@ class TimetableController < ApplicationController
   		end 
 
   	@finals = List.joins(:timetable).where(:member_id => current_member.id).where(Timetable.table_name + ".playtime > ?",@time)
-	@finals1 = List.joins(:timetable).where(:member_id => current_member.id).where(Timetable.table_name + ".playtime > ?",@time).select("playtime").map(&:playtime)
+	  @finals1 = List.joins(:timetable).where(:member_id => current_member.id).where(Timetable.table_name + ".playtime > ?",@time).select("playtime").map(&:playtime)
 
   end
 end

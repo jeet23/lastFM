@@ -1,13 +1,12 @@
 <% if member_signed_in? %>
 
 <h1> List of songs played</h1>
-
 <table class="table table-hover">
 	<tr><td><b>Song name</b></td>
 	<td><b>Album</b></td>
 	<td><b>Artist</b></td>
 	<td><b>Favourite</b></td>
-
+	</tr>
 	
 <% @lists.each do |a| %>
 <tr>

@@ -5,5 +5,5 @@ class List < ActiveRecord::Base
   has_many :timetable
   
 
-  validates :member_id, uniqueness: { scope: [:song_id]}
+ # validates :member_id, uniqueness: { scope: [:song_id]}
 end
