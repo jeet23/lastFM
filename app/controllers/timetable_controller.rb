@@ -4,6 +4,13 @@ class TimetableController < ApplicationController
      @tests = List.joins(:timetable).where(:member_id => current_member.id).group(:song_id).count
      @tests1 = List.joins(:timetable).where(:member_id => current_member.id).group(:song_id)
 
+    @hash = Hash.new
+    @b = List.where(:member_id => current_member.id)
+    @b.each do |m|
+    @hash[m.song_id] = m.fav
+    end
+
+
   end
 
   def calculate

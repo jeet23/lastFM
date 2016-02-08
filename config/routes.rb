@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post "list/index.:id" => "list#index"
   post "timetable/index" => "timetable#index"
   post "timetable/calculate" => "timetable#calculate"
+  get "timetable/calculate" => "timetable#calculate"
   post "timetable/sort" => "timetable#sort"
   get "timetable/sort" => "timetable#sort"
   

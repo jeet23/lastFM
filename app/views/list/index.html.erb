@@ -5,7 +5,7 @@
 	<tr><td><b>Song name</b></td>
 	<td><b>Album</b></td>
 	<td><b>Artist</b></td>
-	<td><b>Favourite</b></td>
+	<td><b>Played at / Favorited at </b></td>
 	</tr>
 	
 <% @lists.each do |a| %>
@@ -13,7 +13,7 @@
 <td class="success"><%= a.song.songname %></td>
 <td class="warning"><%= a.song.album %></td>
 <td class="danger"><%= a.song.artist %></td>
-<td class="info"><%= a.fav %></td><br>
+<td class="info"><%= a.updated_at %></td>
 </tr>
 <% end %>
 

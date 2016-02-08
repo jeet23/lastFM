@@ -27,8 +27,14 @@
 		</td>
 		<td>
 			<table class="table table-hover">
+				<tr>
 				<% @tests1.each do |a| %>
-				<tr><td class="warning"> <%= a.fav %></td></tr>
+				<% if @hash[a.song_id] == true %>
+				<td class="warning"><%= image_tag("a.jpg", height: 20, weight: 20)%>
+					<% else %>
+					<td class="warning"><%= image_tag("b.png", height: 20, weight: 20) %>
+						<% end %>
+					</tr>
 				<% end %>
 			</table>
 		</td>

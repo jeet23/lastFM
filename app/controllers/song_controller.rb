@@ -2,6 +2,13 @@ class SongController < ApplicationController
   def index
   	@songs = Song.all
 
+    @hash = Hash.new
+
+    @b = List.where(:member_id => current_member.id)
+    @b.each do |m|
+      @hash[m.song_id] = m.fav
+    end
+
   end
 
   def play
