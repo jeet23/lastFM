@@ -24,7 +24,8 @@ class TimetableController < ApplicationController
   		end
   		u.save
   	end
-  	redirect_to '/' 
+   redirect_to '/'
+    
   end
 
   def sort
