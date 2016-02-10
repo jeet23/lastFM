@@ -9,10 +9,8 @@
 <body>
  <script>
 $(document).ready(function() {
-  $.ajax('timetable/calculate');
-   setInterval(function () {
-         $.ajax('/timetable/calculate');
-   } , 5000);          
+  $.ajax('/song/calculate');
+        
 }); 
 </script>
 

@@ -13,20 +13,7 @@ class TimetableController < ApplicationController
 
   end
 
-  def calculate
-  	@a = List.where(:member_id => current_member.id, :song_id => params[:foo1])
-   
-   	@a.each do |u|
-  		if u.fav
-  			u.fav = 0
-  		else
-  			u.fav = 1
-  		end
-  		u.save
-  	end
-   redirect_to '/'
-    
-  end
+  
 
   def sort
 

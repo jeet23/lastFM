@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   post "/song/play" => "song#play"
   post "list/index.:id" => "list#index"
   post "timetable/index" => "timetable#index"
+  post "song/calculate" => "song#calculate"
+  get "song/calculate" => "song#calculate"
+  
   post "timetable/calculate" => "timetable#calculate"
   get "timetable/calculate" => "timetable#calculate"
   post "timetable/sort" => "timetable#sort"

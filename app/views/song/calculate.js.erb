@@ -1,0 +1,2 @@
+a = <%= @check1 %>
+$("#"+a).html(" <%= escape_javascript(render partial: 'calculate', locals: { hash: @hash , check1: @check1}) %>");

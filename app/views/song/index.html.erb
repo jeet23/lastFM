@@ -22,11 +22,12 @@
 <td class="warning"><%= a.artist %></td>
 <td class="danger"> <%= a.album %></td>
 <td class="info"><%= a.duration %></td>
-<% if @hash[a.id] == true %>
-<td class="warning"><%= link_to(image_tag("a.jpg", height: 20, weight: 20), timetable_calculate_path(foo1: a.id)) %>
-	<%else%>
-<td class="warning"><%= link_to(image_tag("b.png", height: 20, weight: 20), timetable_calculate_path(foo1: a.id)) %>
-<% end %>	
+<td class="warning">
+<% div_id= "#{a.id}" -%>
+<div id="<%= div_id -%>">
+<%= render :partial => "calculate", :locals => {:check1 => a.id} %>
+</div>
+</td>
 
 <td class="btn-default"><%= button_to "Play", song_play_path(foo: a.id) %></td>
 
