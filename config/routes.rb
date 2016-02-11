@@ -17,8 +17,6 @@ Rails.application.routes.draw do
   post "song/calculate" => "song#calculate"
   get "song/calculate" => "song#calculate"
   
-  post "timetable/calculate" => "timetable#calculate"
-  get "timetable/calculate" => "timetable#calculate"
   post "timetable/sort" => "timetable#sort"
   get "timetable/sort" => "timetable#sort"
   

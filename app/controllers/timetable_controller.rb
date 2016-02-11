@@ -9,8 +9,6 @@ class TimetableController < ApplicationController
     @b.each do |m|
     @hash[m.song_id] = m.fav
     end
-
-
   end
 
   

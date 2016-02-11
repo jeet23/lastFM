@@ -37,8 +37,15 @@ class SongController < ApplicationController
   end
 
   def play
+
   	@list = List.create(member_id: current_member.id, song_id: params[:foo])
-    @list.fav = 0
+    @find = List.find_by(member_id: current_member.id, song_id:params[:foo])
+    if @find.fav
+      @list.fav = 1
+    else
+      @list.fav = 0
+    end
+    @list.save
     
     if @list.valid?
   		@time = Timetable.new
